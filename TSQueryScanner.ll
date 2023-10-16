@@ -18,7 +18,7 @@ using namespace DB::TSQuery;
 
 %}
 
-whitespace      [ \t]+
+whitespace      [ \t\n]+
 token_value     [^ ()&|!\t\n]*
 
 %%

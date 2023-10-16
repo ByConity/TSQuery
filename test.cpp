@@ -11,6 +11,5 @@ int main()
 
     driver.parse("(c|a   )&  ass''你好&  !  b|(caaa &   asasa*ascxs   | !!!!!!!!a ) ");
 
-
     return 0;
 }
