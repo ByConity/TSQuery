@@ -71,9 +71,9 @@ class TSqueryContext
 public:
     ~TSqueryContext()
     {
-        for( size_t i = 0 ; i < expressions.size() ; i++)
+        for(auto & expression : expressions)
         {
-            delete expressions[i];
+            delete expression;
         }
         expressions.clear();
     }
