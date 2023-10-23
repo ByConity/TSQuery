@@ -37,19 +37,23 @@ public:
     {
         QueryOperatorType type;
 
-        QueryOperator(const QueryOperatorType & type_): type(type_) {};
+        explicit QueryOperator(const QueryOperatorType & type_): type(type_) {};
     };
 
     struct QueryOperand
     {
         std::string val; 
 
-        QueryOperand(const std::string * val_): val(*val_) {};
+        explicit QueryOperand(const std::string * val_): val(*val_) {};
 
-        QueryOperand(const std::string & val_): val(val_) {};
+        explicit QueryOperand(const std::string & val_): val(val_) {};
     };
 
     std::string toString() const;
+
+    QueryItermType getQueryItermType() const;
+    QueryOperator  getQueryOperator() const;
+    QueryOperand   getQueryOperand() const;
 
 private:
     QueryItermType type;
@@ -59,7 +63,7 @@ private:
     QueryOperand query_operand;
 
     // TSQueryAST only can create by TSqueryContext to avoid memory leak
-    TSQueryAST(QueryOperand query_operand_);
+    explicit TSQueryAST(QueryOperand query_operand_);
     TSQueryAST(QueryOperator query_operator_, TSQueryASTPtr left_);
     TSQueryAST(QueryOperator query_operator_, TSQueryASTPtr left_, TSQueryASTPtr right_);
 

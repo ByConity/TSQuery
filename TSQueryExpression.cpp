@@ -91,6 +91,35 @@ std::string TSQueryAST::toString() const
     
 }
 
+
+TSQueryAST::QueryItermType TSQueryAST::getQueryItermType() const
+{
+    return type;
+}
+
+TSQueryAST::QueryOperator  TSQueryAST::getQueryOperator() const
+{
+    if (type == QueryItermType::QI_VAL)
+    {   
+
+        //TODO
+        throw ;
+    }
+    return query_operator;
+}
+
+TSQueryAST::QueryOperand   TSQueryAST::getQueryOperand() const
+{
+    if (type == QueryItermType::QI_OPR)
+    {
+        //TODO
+        throw;
+    }
+
+    return query_operand;
+}
+
+
 }
 
 }
