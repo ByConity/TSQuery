@@ -54,6 +54,8 @@ public:
     QueryItermType getQueryItermType() const;
     QueryOperator  getQueryOperator() const;
     QueryOperand   getQueryOperand() const;
+    TSQueryASTPtr  getLeftNode() const;
+    TSQueryASTPtr  getRightNode() const;
 
 private:
     QueryItermType type;

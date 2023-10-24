@@ -119,6 +119,15 @@ TSQueryAST::QueryOperand   TSQueryAST::getQueryOperand() const
     return query_operand;
 }
 
+TSQueryASTPtr  TSQueryAST::getLeftNode() const
+{
+    return left;
+}
+
+TSQueryASTPtr  TSQueryAST::getRightNode() const
+{
+    return right;
+}
 
 }
 
