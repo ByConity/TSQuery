@@ -32,6 +32,10 @@ TSQueryASTPtr TSQueryParserDriver::parse(const std::string & input_string)
     {   
         parser.parse();
     }
+    catch(TSQueryException &e)
+    {
+        throw e;
+    }
     catch(...)
     {
         throw  TSQueryException("Error on parse.");
@@ -48,7 +52,7 @@ TSQueryASTPtr TSQueryParserDriver::parse(const std::string & input_string)
 
 void TSQueryParser::error(const std::string& msg)
 {
-    throw  TSQueryException("Error on parse.");
+    throw  TSQueryException("Error on parse : " + msg );
 }
 }
 
