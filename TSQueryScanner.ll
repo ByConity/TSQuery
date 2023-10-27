@@ -5,7 +5,7 @@
 %option nodefault
 
 /* disable after debug %option debug */
-%option debug
+/* %option debug */
 
 %{
 

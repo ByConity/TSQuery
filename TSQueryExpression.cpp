@@ -1,4 +1,5 @@
 #include "TSQueryExpression.h"
+#include "TSQueryException.h"
 
 
 namespace  DB
@@ -18,7 +19,7 @@ std::string TSQueryAST::queryOperatorTypeToString(const QueryOperatorType & type
         case QueryOperatorType::OP_NOT:
             return " ! " ;
         default:
-            return "error";
+            throw TSQueryException("UNKNOWN Operator Type");
     }
 }
 
@@ -44,8 +45,7 @@ TSQueryAST::TSQueryAST(
 {
     if ( query_operator.type != QueryOperatorType::OP_NOT)
     {
-        // TODO
-        throw;
+        throw TSQueryException("Only NOT  Operator have one left node");
     }
 
 }
@@ -100,10 +100,8 @@ TSQueryAST::QueryItermType TSQueryAST::getQueryItermType() const
 TSQueryAST::QueryOperator  TSQueryAST::getQueryOperator() const
 {
     if (type == QueryItermType::QI_VAL)
-    {   
-
-        //TODO
-        throw ;
+    {
+        throw TSQueryException("Node is not a operator node.");
     }
     return query_operator;
 }
@@ -112,8 +110,7 @@ TSQueryAST::QueryOperand   TSQueryAST::getQueryOperand() const
 {
     if (type == QueryItermType::QI_OPR)
     {
-        //TODO
-        throw;
+        throw TSQueryException("Node is not a operand node.");
     }
 
     return query_operand;

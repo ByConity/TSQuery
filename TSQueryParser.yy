@@ -1,7 +1,7 @@
 %language "c++"
 
 /* disable after debug %debug */
-%debug
+/* %debug */
 
 %define api.namespace { DB::TSQuery }
 %define parser_class_name {TSQueryParser}

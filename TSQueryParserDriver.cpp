@@ -2,6 +2,7 @@
 #include "TSQueryExpression.h"
 #include "TSQueryParser.tab.hh"
 #include "TSQueryScanner.h"
+#include "TSQueryException.h"
 #include <cstddef>
 #include <exception>
 #include <iostream>
@@ -19,38 +20,35 @@ TSQueryASTPtr TSQueryParserDriver::parse(const std::string & input_string)
     std::istringstream input_stream(input_string);
     scanner = std::make_unique<TSQueryScanner>(&input_stream);
 
-    // For debug
-    scanner->set_debug(true);
+
     
     TSQueryParser parser(*this);
 
     //For debug
-    parser.set_debug_level(true);
+    //scanner->set_debug(true);
+    //parser.set_debug_level(true);
 
     try
     {   
         parser.parse();
     }
     catch(...)
-    {   
-        std::cout << "error with parser" << std::endl;
+    {
+        throw  TSQueryException("Error on parse.");
         return nullptr;
     }
 
     if (result_ast!=nullptr)
-    {   
-        std::cout << result_ast->toString() << std::endl;
+    {
         return result_ast;
     }
 
-    //TODO exception
-    return nullptr;
+    throw  TSQueryException("Error on parse.");
 }
 
 void TSQueryParser::error(const std::string& msg)
 {
-    //TODO 
-    throw  std::exception();
+    throw  TSQueryException("Error on parse.");
 }
 }
 
